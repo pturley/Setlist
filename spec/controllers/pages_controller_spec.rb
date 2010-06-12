@@ -16,7 +16,7 @@ describe PagesController do
     it "should have the right title" do
       check_title('home')
     end
-  end
+  end 
 
   describe "GET 'contact'" do
     it "should be successful" do
@@ -54,8 +54,8 @@ describe PagesController do
   end
   
   def check_title(action)
-    get action
-    response.should have_tag("title", action.capitalize)
+    get action 
+    response.should have_tag("title", "Setlist | #{action.capitalize}")
   end
   
 end
