@@ -1,9 +1,14 @@
 .container { 
 	width: 710px; 
+	color: #888;
 } 
 
+.container h1 {
+	color: #ccc;
+}
+
 body { 
-	background: #cff; 
+	background: #000; 
 } 
 
 #header { 
@@ -12,13 +17,11 @@ body {
 
 #header img { 
 	padding: 1em; 
-	background: #fff; 
 	width: 60%;
 }
 
 .navigation {
 	float: right;
-	background-color: white;
 	padding: 0 0.7em;
 	white-space: nowrap;
 }
@@ -38,10 +41,6 @@ ul.navigation {
 	font-weight: bold;
 }
 
-.navigation li a:visited { 
-	color: #09c; 
-}
-
 .navigation li a:hover { 
 	text-decoration: underline; 
 }
@@ -49,8 +48,8 @@ ul.navigation {
 #content { 
 	margin-top: 1em; 
 	font-size: 120%; 
-	padding: 20px; 
-	background: #fff;
+	padding: 20px;		
+	background-color: #222; 
 } 
 
 #footer { 
@@ -67,17 +66,13 @@ ul.navigation {
 
 /* Links */ 
 a { 
-	color: #09c; 
+	color: #777; 
 	text-decoration: none; 
 } 
 
 a:hover { 
-	color: #069; 
+	color: #aaa; 
 	text-decoration: underline; 
-}
- 
-a:visited { 
-	color: #069; 
 }
 
 a.signup_button { 
