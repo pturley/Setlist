@@ -27,5 +27,4 @@ describe "LayoutLinks" do
     response.should render_template 'users/new'
   end
   
-  
 end
