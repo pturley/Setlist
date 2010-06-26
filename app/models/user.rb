@@ -1,3 +1,4 @@
+require 'digest'
 class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
@@ -8,4 +9,31 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :case_sensitive => false
   validates_confirmation_of :password
   validates_length_of :password, :within => 6..40
+  
+  before_save :encrypt_password
+  
+  def has_password?(submitted_password)
+    encrypt(submitted_password) == self.encrypted_password
+  end
+  
+  def self.authenticate(email_address, password)
+    user = User.find_by_email email_address
+    return nil if user.nil?
+    return user if user.has_password? password
+  end
+  
+  private
+  
+    def encrypt_password
+      self.salt = secure_hash("#{Time.now.utc}#{password}")
+      self.encrypted_password = encrypt(password)
+    end
+    
+    def encrypt(string_to_encrypt)     
+      secure_hash("#{salt}#{string_to_encrypt}")
+    end
+    
+    def secure_hash(string_to_secure)
+      Digest::SHA2.hexdigest(string_to_secure)
+    end
 end

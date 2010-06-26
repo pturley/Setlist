@@ -8,7 +8,7 @@
 }
 
 body { 
-	background: #000; 
+	background: #111; 
 } 
 
 #header { 
@@ -17,7 +17,6 @@ body {
 
 #header img { 
 	padding: 1em; 
-	width: 60%;
 }
 
 .navigation {
@@ -62,6 +61,7 @@ ul.navigation {
  
 #footer .navigation { 
 	float: none; 
+	background-color: #222;
 }
 
 /* Links */ 
@@ -92,4 +92,27 @@ a.signup_button {
 	-moz-border-radius: 10px; 
 	-webkit-border-radius: 10px;
 	border-radius: 5px;
+}
+
+/* User Page */
+table.profile { 
+	width: 100%; 
+	margin-bottom: 0; 
+} 
+
+td.main { 
+	width: 70%; 
+	padding: 1em; 
+}
+ 
+td.sidebar { 
+	width: 30%; 
+	padding: 1em; 
+	vertical-align: top; 
+	background: #111; 
+}
+ 
+.profile img.gravatar { 
+	border: 1px solid #999; 
+	margin-bottom: -15px; 
 }

@@ -56,7 +56,11 @@ describe User do
     end
   end
   
-  describe "Password Validations" do 
+  describe "Password Validations" do
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+     
     it "should require password to be identical to password_confirmation" do
       invalid_user = User.new @attr.merge :password_confirmation => "wrong_password"
       invalid_user.should_not be_valid
@@ -71,7 +75,30 @@ describe User do
     end
     
     it "should have an encrypted password attribute" do
-      User.create!(@attr).should respond_to(:encrypted_password)
+      @user.should respond_to(:encrypted_password)
+      @user.encrypted_password.should_not be_blank
+    end
+    
+    it "should know if passwords match" do
+      @user.has_password?(@attr[:password]).should be_true
+      @user.has_password?("invalid").should be_false      
+    end
+    
+    describe "authentication method" do
+      it "should return nil if there is no user in the database with the given email" do
+        non_existent_user = User.authenticate("alskdf@blah.com", @attr[:password])
+        non_existent_user.should be_nil
+      end
+      
+      it "should return nil if the email and password dont match" do
+        wrong_password_user = User.authenticate(@attr[:email], "wrong_password")
+        wrong_password_user.should be_nil
+      end
+      
+      it "should return the user if email and password match" do
+        authenticated_user = User.authenticate(@attr[:email], @attr[:password])
+        authenticated_user.should == @user
+      end
     end
   end
 end
