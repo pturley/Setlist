@@ -1,2 +1,12 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h2>Sign up</h2>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+  <%= name = [f.label(:name), f.text_field(:name)]
+      email = [f.label(:email), f.text_field(:email)]
+      password = [f.label(:password), f.password_field(:password)]
+      confirmation = [f.label("Confirmation"), f.password_field(:password_confirmation)]
+      buttons = [f.submit("Sign up"), ""]
+      
+      table([name, email, password, confirmation, buttons], :class => "signup_table") %>
+<% end %>

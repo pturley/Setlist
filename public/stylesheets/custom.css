@@ -7,6 +7,10 @@
 	color: #ccc;
 }
 
+.container h2 {
+	color: #ccc;
+}
+
 body { 
 	background: #111; 
 } 
@@ -92,6 +96,61 @@ a.signup_button {
 	-moz-border-radius: 10px; 
 	-webkit-border-radius: 10px;
 	border-radius: 5px;
+}
+
+/* Signup Page */
+div.field, div.actions { 
+	margin-bottom: 10px; 
+}
+
+table.signup_table {
+	width: auto;
+}
+
+.fieldWithErrors input {
+	border: 2px solid red;
+	background-color: #f6a0a0;
+}
+
+.fieldWithErrors label { 
+	color: red; 
+} 
+
+#errorExplanation { 
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px;
+	border-radius: 5px;
+	width: 310px; 
+	border: 2px solid red; 
+	padding: 7px; 
+	padding-bottom: 12px;
+	background-color: #f6a0a0; 
+} 
+
+#errorExplanation h2 { 
+	text-align: left; 
+	font-weight: bold; 
+	padding: 5px 5px 5px 15px; 
+	font-size: 12px; 
+	margin: -7px; 
+	background-color: #f65050; 
+} 
+
+#errorExplanation p { 
+	color: #555; 
+	margin-bottom: 0; 
+	padding: 5px; 
+} 
+
+#errorExplanation ul {
+		margin: 0;
+		padding-left: 3em;
+}
+
+#errorExplanation ul li { 
+	color: #555;
+	font-size: 12px; 
+	list-style: square; 
 }
 
 /* User Page */
