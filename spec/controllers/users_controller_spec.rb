@@ -77,6 +77,10 @@ describe UsersController do
         response.should redirect_to(user_path(@user)) 
       end 
       
+      it "should have a welcome message" do
+        post :create, :user => @attr
+        flash[:success].should =~ /welcome to setlist/i
+      end
     end
   end
   
