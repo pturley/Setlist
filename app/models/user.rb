@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
     encrypt(submitted_password) == self.encrypted_password
   end
   
+  def remember_me!
+    self.remember_token = encrypt("#{salt}--#{id}--#{Time.now.utc}")
+    save_without_validation
+  end
+  
   def self.authenticate(email_address, password)
     user = User.find_by_email email_address
     return nil if user.nil?
@@ -25,8 +30,10 @@ class User < ActiveRecord::Base
   private
   
     def encrypt_password
-      self.salt = secure_hash("#{Time.now.utc}#{password}")
-      self.encrypted_password = encrypt(password)
+      unless password.nil?
+        self.salt = secure_hash("#{Time.now.utc}#{password}")
+        self.encrypted_password = encrypt(password)
+      end
     end
     
     def encrypt(string_to_encrypt)     

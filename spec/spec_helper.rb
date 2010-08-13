@@ -4,9 +4,11 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environment'))
 require 'spec/autorun'
 require 'spec/rails'
+require 'webrat'
 
-# Uncomment the next line to use webrat's matchers
-#require 'webrat/integrations/rspec-rails'
+Webrat.configure do |config|
+  config.mode = :rails
+end
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
@@ -51,4 +53,8 @@ Spec::Runner.configure do |config|
   # == Notes
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
+  
+  def test_sign_in(user)
+    controller.current_user = user
+  end
 end

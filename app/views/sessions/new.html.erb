@@ -1,0 +1,10 @@
+<h2>Sign in</h2> 
+<% form_for(:session, :url => sessions_path) do |f| %> 
+  <%= 
+    email = [f.label(:email), f.text_field(:email)]
+    password = [f.label(:password), f.password_field(:password)]
+    button = [f.submit("Sign in"), ""]
+    
+    table([email, password, button], :class => "auto_width") %>
+<% end %> 
+<p>New user? <%= link_to "Sign up now!", signup_path %></p>

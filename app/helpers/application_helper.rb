@@ -10,4 +10,8 @@ module ApplicationHelper
     end
   end
   
+  def logo
+    image = image_tag "logo.png", :alt => "Setlist", :class => "logo round"
+    link_to image, root_path
+  end
 end
