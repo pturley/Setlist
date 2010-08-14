@@ -121,4 +121,5 @@ describe User do
       @user.remember_token.should_not be_nil
     end
   end
+
 end

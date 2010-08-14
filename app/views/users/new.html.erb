@@ -5,7 +5,7 @@
   <%= name = [f.label(:name), f.text_field(:name)]
       email = [f.label(:email), f.text_field(:email)]
       password = [f.label(:password), f.password_field(:password)]
-      confirmation = [f.label("Confirmation"), f.password_field(:password_confirmation)]
+      confirmation = [f.label(:password_confirmation, "Confirmation"), f.password_field(:password_confirmation)]
       buttons = [f.submit("Sign up"), ""]
       
       table([name, email, password, confirmation, buttons], :class => "auto_width") %>
