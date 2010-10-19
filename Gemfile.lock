@@ -61,6 +61,7 @@ DEPENDENCIES
   autotest-growl
   autotest-rails
   em-websocket
+  eventmachine
   factory_girl
   launchy
   rails (= 2.3.8)

@@ -1,1 +1,36 @@
 <%= link_to "Sign up now!", '/signup', :class => "signup_button round" %>
+
+<script type="text/javascript">
+  function debug(str){ 
+    $("#debug").append("<p>"+str+"</p>"); 
+  };
+
+    
+    var ws = new WebSocket("ws://10.2.12.38:8080/");
+    debug("initializing...");
+
+    ws.onopen = function() {
+        debug("connected...");
+        ws.send("hello server");
+    };
+    
+    ws.onclose = function() { 
+        debug("socket closed"); 
+    };      
+    
+    ws.onmessage = function(evt) { 
+        $("#msg").append("<p>"+evt.data+"</p>"); 
+    };      
+  
+</script>
+
+<input type="button" value="Play on Socket" onclick="ws.send('play');" />
+<input type="button" value="Close Socket" onclick="ws.close();" />
+
+<audio id="song" controls="controls" preload="auto">
+  <source src="song.mp3" type="audio/mpeg" />
+Your browser does not support the audio element.
+</audio>
+
+<div id="debug"></div>
+<div id="msg"></div>
