@@ -1,36 +1,47 @@
-require 'rubygems'
 require 'eventmachine'
 require 'em-websocket'
 
 class SetlistWebsocketServer
-  def self.start
+  
+  def initialize
+  end
+  
+  def start
     fork do
       EM.run {
-        websocket_connections = []
+        @websocket_connections = []
   
-        EM::WebSocket.start(:host => "10.2.12.38", :port => 8080) do |ws|
-          ws.onopen {
-            ws.send "Hello Client!"
-            puts "Websocket connection opened"
-            websocket_connections << ws
-            puts "The sockets are:"
-            websocket_connections.each do |socket|
-              puts socket.request["Origin"]
-            end
-          }
+        EM::WebSocket.start(:host => "10.2.12.38", :port => 8080) do |socket|
+          socket.onopen { open socket }
     
-          ws.onmessage do |msg| 
-            websocket_connections.each do |socket|
-              socket.send "#{msg}"
-            end 
-          end
+          socket.onmessage { |message| broadcast message }
     
-          ws.onclose {
-            puts "Websocket connection closed"
-            websocket_connections.delete(ws)
-          }
+          socket.onclose { destroy socket }
         end
       }
     end
   end
+  
+  private
+  
+  def open(socket)
+    puts "New websocket connection opened"
+    @websocket_connections << socket
+    puts "The current sockets are:"
+    @websocket_connections.each do |socket|
+      puts socket.request["Origin"]
+    end
+  end
+  
+  def destroy(socket)
+    puts "Websocket connection closed"
+    @websocket_connections.delete(socket)
+  end
+  
+  def broadcast(message)
+    @websocket_connections.each do |socket|
+      socket.send "#{message}"
+    end 
+  end
+  
 end

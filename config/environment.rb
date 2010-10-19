@@ -41,4 +41,4 @@ Rails::Initializer.run do |config|
 end
 
 require 'app/websocket_server/server.rb'
-SetlistWebsocketServer.start()
+SetlistWebsocketServer.new.start
