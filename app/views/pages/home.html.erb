@@ -19,7 +19,9 @@
     };      
     
     ws.onmessage = function(evt) { 
-        $("#msg").append("<p>"+evt.data+"</p>"); 
+        if(evt.data == "play"){
+          $("#song")[0].play();
+        }
     };      
   
 </script>

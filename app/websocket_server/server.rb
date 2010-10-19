@@ -18,7 +18,7 @@ EM.run {
     
     ws.onmessage do |msg| 
       websocket_connections.each do |socket|
-        socket.send "Pong: #{msg}"
+        socket.send "#{msg}"
       end 
     end
     
