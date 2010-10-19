@@ -29,22 +29,13 @@ body {
 	white-space: nowrap;
 }
 
-ul.navigation {
-	margin: 0;
-}
 
-.navigation li {
-	list-style-type: none;
-	display: inline-block;
-	padding: 0.2em 0;
-}
-
-.navigation li a {
+.navigation a {
 	padding: 0 5px;
 	font-weight: bold;
 }
 
-.navigation li a:hover { 
+.navigation a:hover { 
 	text-decoration: underline; 
 }
 

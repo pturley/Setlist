@@ -1,12 +1,14 @@
 <div id="header"> 
-  <%= logo %> 
-  <ul class="navigation round"> 
-    <li><%= link_to "Home", root_path %></li> 
+  <div class="navigation"> 
+    <%= link_to "Home", root_path %>
     <% if signed_in? %> 
-      <li><%= link_to "Profile", current_user %></li>       
-      <li><%= link_to "Sign out", signout_path, :method => :delete %></li> 
+      <%= link_to "Profile", current_user %>
+      <%= link_to "Sign out", signout_path, :method => :delete %>
     <% else %> 
-      <li><%= link_to "Sign in", signin_path %></li> 
+      <%= link_to "Sign in", signin_path %>
     <% end %>
-  </ul> 
+  </div> 
+  <div>
+    <%= logo %> 
+  </div>
 </div>
