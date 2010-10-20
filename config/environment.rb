@@ -40,5 +40,6 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
-require 'app/websocket_server/server.rb'
-SetlistWebsocketServer.new.start
+WEBSOCKET_HOST = "192.168.1.101"
+WEBSOCKET_PORT = "8080"
+SetlistWebsocketServer.new(WEBSOCKET_HOST, WEBSOCKET_PORT).start

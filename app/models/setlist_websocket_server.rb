@@ -2,11 +2,10 @@ require 'eventmachine'
 require 'em-websocket'
 
 class SetlistWebsocketServer
-  
-  HOST = "192.168.1.101"
-  PORT = 8080
-  
-  def initialize
+    
+  def initialize(host, port=8080)
+    @host = host
+    @port = port
   end
   
   def start
@@ -14,7 +13,7 @@ class SetlistWebsocketServer
       EM.run {
         @websocket_connections = []
         
-        EM::WebSocket.start( :host => HOST, :port => PORT ) do |socket|
+        EM::WebSocket.start( :host => @host, :port => @port ) do |socket|
           socket.onopen { open socket }
     
           socket.onmessage { |message| broadcast message }

@@ -1,8 +1,8 @@
 <%= link_to "Sign up now!", '/signup', :class => "signup_button round" %>
 
 <script type="text/javascript">
-    var ws_server = "192.168.1.101"
-    var ws_port = "8080"
+    var ws_server = "<%= WEBSOCKET_HOST %>"
+    var ws_port = <%= WEBSOCKET_PORT %>
     var ws = new WebSocket("ws://" + ws_server + ":" + ws_port);
 
     ws.onopen = function() {
