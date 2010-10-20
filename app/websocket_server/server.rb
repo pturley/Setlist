@@ -3,6 +3,9 @@ require 'em-websocket'
 
 class SetlistWebsocketServer
   
+  HOST = "192.168.1.101"
+  PORT = 8080
+  
   def initialize
   end
   
@@ -10,8 +13,8 @@ class SetlistWebsocketServer
     fork do
       EM.run {
         @websocket_connections = []
-  
-        EM::WebSocket.start(:host => "10.2.12.38", :port => 8080) do |socket|
+        
+        EM::WebSocket.start( :host => HOST, :port => PORT ) do |socket|
           socket.onopen { open socket }
     
           socket.onmessage { |message| broadcast message }
