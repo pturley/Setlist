@@ -6,7 +6,8 @@ RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
-WEBSOCKET_HOST = "11.22.20.100"
+require 'socket'
+WEBSOCKET_HOST = IPSocket.getaddress(Socket.gethostname)
 WEBSOCKET_PORT = "8080"
 
 Rails::Initializer.run do |config|

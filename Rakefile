@@ -9,4 +9,8 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
-task :default => ["db:migrate", "db:test:prepare", "spec"]
+task :stop_websocket_server do
+  SetlistWebsocketServer.stop
+end
+
+task :default => ["db:migrate", "db:test:prepare", "spec", "stop_websocket_server"]
