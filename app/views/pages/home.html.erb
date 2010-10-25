@@ -6,7 +6,6 @@
     var ws = new WebSocket("ws://" + ws_server + ":" + ws_port);
 
     ws.onopen = function() {
-        ws.send("hello server");
     };
     
     ws.onclose = function() { 
