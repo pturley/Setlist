@@ -1,6 +1,6 @@
 source :gemcutter
 
-gem 'rails',              '2.3.8'
+gem 'rails',              '3.2.17'
 gem 'autotest-rails'
 gem 'sqlite3-ruby'
 gem 'eventmachine'
